@@ -1,5 +1,17 @@
 .js-form {
-  background-color: lightgray;
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+
+  background-color: lightgrey;
   margin: 5px;
   padding: 10px;
+}
+
+#allLeagues {
+  background-color: white;
+}
+
+#selectedLeague {
+  background-color: white;
 }

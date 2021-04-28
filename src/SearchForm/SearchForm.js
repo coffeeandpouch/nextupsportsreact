@@ -4,22 +4,22 @@ import "./SearchForm.css";
 function SearchForm() {
   return (
     <>
-      <form class="js-form">
-        <label for="allLeagues">League:</label>
+      <form className="js-form">
+        <label htmlFor="allLeagues">League:</label>
         <select id="allLeagues">
-          <option value="" disabled selected>
+          <option defaultValue="" disabled selected>
             Choose your league
           </option>
         </select>
         <br />
         <label for="selectedLeague">Team:</label>
         <select id="selectedLeague">
-          <option disabled selected value="">
+          <option disabled selected defaultValue="">
             Choose your team
           </option>
         </select>
 
-        <label for="teamId" hidden>
+        <label htmlFor="teamId" hidden>
           Team ID:
         </label>
 
@@ -31,10 +31,9 @@ function SearchForm() {
           hidden
         />
 
-        <input type="submit" value="Go!" />
+        <input type="submit" defaultValue="Go!" />
         <br />
       </form>
-      <h2 class="cards">Search results</h2>
     </>
   );
 }
