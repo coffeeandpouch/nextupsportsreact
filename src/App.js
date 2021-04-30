@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "../src/Header/Header";
-import SearchForm from "../src/SearchForm/SearchForm";
-import SearchResults from "../src/SearchResults/SearchResults";
+import axios from "axios";
 
 export default class App extends React.Component {
   constructor() {
@@ -10,64 +9,29 @@ export default class App extends React.Component {
       League: [],
       Team: [],
     };
-
-    const leagueUrl =
-      "https://www.thesportsdb.com/api/v1/json/40130162/all_leagues.php";
-
-    const allTeamsUrl =
-      "https://www.thesportsdb.com/api/v1/json/40130162/lookup_all_teams.php";
-
-    const searchUrl =
-      "https://www.thesportsdb.com/api/v1/json/40130162/eventsnext.php";
-
-    const apiKey = "AIzaSyCftPUQqZxBItKv-g-0HAOWNbMuT47BdMM";
-
-    const mapUrl =
-      "https://maps.googleapis.com/maps/api/js?key=AIzaSyCftPUQqZxBItKv-g-0HAOWNbMuT47BdMM&callback=initMap";
-
-    let map, geocoder;
-
-    function displayLeaguesInput(responseJson) {
-      //iterate through the leagues array
-      for (let i = 0; i < responseJson.leagues.length; i++) {
-        //for each league in the leagues array, add a list item to options list with the league name
-        this.setState({
-          League: (
-            <option value={responseJson.leagues[i].idLeague}>
-              {responseJson.leagues[i].strLeague}
-            </option>
-          ),
-        });
-
-      //fetch all leagues and display at page load
-       getLeagues = () => {
-         fetch(leagueUrl)
-         .then((response) => {
-           if (response.ok) {
-             return response.json();
-           }
-           throw new error(response.statusText)
-         })
-         .then((responseJson) => displayLeaguesInput(responseJson))
-         .catch((err) => {<div><p>(err.message)</p></div>
-         },
-      
-      }
-    
   }
-}
+
+  async getLeagues() {
+    const res = await axios.get(
+      "https://www.thesportsdb.com/api/v1/json/40130162/all_leagues.php"
+    );
+    const leagues = res.json.leagues.idLeague;
+
+    const selectLeague = leagues.map((l) => ({
+      League: l.idLeague,
+    }));
+    this.setState({ League: selectLeague });
+  }
+  componentDidMount() {
+    this.getLeagues();
   }
 
   render() {
+    console.log(this.state.getLeagues);
     return (
       <div>
-        <main className="App">
-          {<Header />}
-          <br />
-          {<SearchForm />}
-          <br />
-          {<SearchResults />}
-        </main>
+        <main className="App">{<Header />}</main>
+        <br />
       </div>
     );
   }
