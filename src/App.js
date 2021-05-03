@@ -6,11 +6,18 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      League: [],
+      League: "Coconut",
       Team: [],
     };
   }
+  handleChange = (event) => {
+    this.setState({ value: event.target.value });
+  };
 
+  handleSubmit = (event) => {
+    alert(" " + this.state.value);
+    event.preventDefault();
+  };
   render() {
     return (
       <div>
