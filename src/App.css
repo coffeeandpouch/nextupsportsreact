@@ -1,7 +1,14 @@
-.header {
-  border: 1px solid;
+header {
+  border: 1px solid lightgrey;
+  background-color: lightblue;
+  padding: 10px;
+  margin: 10px;
 }
 
 .App {
   border: none;
+}
+
+div {
+  padding: 10px;
 }
