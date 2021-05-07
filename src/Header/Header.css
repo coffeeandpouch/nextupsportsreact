@@ -1,9 +1,19 @@
-* {
-  box-sizing: border-box;
+h1 {
   background-color: lightblue;
   text-align: center;
-  height: 35px;
-  border: 1px;
+  height: 0;
+  /*border: 1px;*/
   padding: 0;
   margin: 0;
+}
+
+#subtitle {
+  background-color: lightblue;
+  text-align: center;
+  border-bottom: 2px solid lightgrey;
+  font-size: 14px;
+}
+
+.titles {
+  padding: 0;
 }
