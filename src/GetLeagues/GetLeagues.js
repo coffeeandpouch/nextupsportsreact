@@ -7,7 +7,7 @@ export default function GetLeagues() {
   const [leagues, setLeagues] = useState([]);
 
   useEffect(() => {
-    fetch("https://www.thesportsdb.com/api/62/all_leagues.phpv1/json/401301")
+    fetch("https://www.thesportsdb.com/api/v1/json/40130162/all_leagues.php ")
       .then((res) => res.json())
       .then(
         (result) => {
@@ -27,11 +27,16 @@ export default function GetLeagues() {
     return <div>Loading...</div>;
   } else {
     return (
-      <ul>
-        {leagues.map((leagues) => (
-          <li key={leagues.idLeague}>{leagues.strLeague}</li>
-        ))}
-      </ul>
+      <form>
+        League:
+        <label>
+          <select>
+            {leagues.map((leagues) => (
+              <li key={leagues.idLeague}>{leagues.strLeague}</li>
+            ))}
+          </select>
+        </label>
+      </form>
     );
   }
 }
