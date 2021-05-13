@@ -4,15 +4,15 @@ import "./GetLeagues.css";
 export default function GetLeagues() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [leagues, setLeagues] = useState([]);
+  const [leagues, setLeagues] = useState({});
 
   useEffect(() => {
     fetch("https://www.thesportsdb.com/api/v1/json/40130162/all_leagues.php ")
       .then((res) => res.json())
       .then(
-        (result) => {
+        (data) => {
           setIsLoaded(true);
-          setLeagues(result);
+          setLeagues({ Leagues: data.leagues });
         },
         (error) => {
           setIsLoaded(true);
@@ -28,8 +28,8 @@ export default function GetLeagues() {
   } else {
     return (
       <form>
-        League:
         <label>
+          League:
           <select>
             {leagues.map((leagues) => (
               <li key={leagues.idLeague}>{leagues.strLeague}</li>
