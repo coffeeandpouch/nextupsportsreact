@@ -12,6 +12,7 @@ export default function GetLeagues() {
       .then(
         (data) => {
           setIsLoaded(true);
+          console.log(data);
           setLeagues({ Leagues: data.leagues });
         },
         (error) => {
