@@ -13,7 +13,7 @@ export default function GetLeagues() {
         (data) => {
           setIsLoaded(true);
           console.log(data);
-          setLeagues({ Leagues: data.leagues });
+          setLeagues({ leagues: data.leagues });
         },
         (error) => {
           setIsLoaded(true);
@@ -32,9 +32,10 @@ export default function GetLeagues() {
         <label>
           League:
           <select>
-            {leagues.map((leagues) => (
-              <li key={leagues.idLeague}>{leagues.strLeague}</li>
-            ))}
+            {leagues &&
+              leagues.data.idLeague.map((leagues) => (
+                <li key={leagues.idLeague}>{leagues.strLeague}</li>
+              ))}
           </select>
         </label>
       </form>
