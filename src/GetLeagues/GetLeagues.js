@@ -32,10 +32,9 @@ export default function GetLeagues() {
         <label>
           League:
           <select>
-            {leagues &&
-              leagues.data.idLeague.map((leagues) => (
-                <li key={leagues.idLeague}>{leagues.strLeague}</li>
-              ))}
+            {[leagues].map((leagues) => (
+              <li key={leagues.idLeague}>{leagues.strLeague}</li>
+            ))}
           </select>
         </label>
       </form>
