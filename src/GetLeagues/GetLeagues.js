@@ -28,16 +28,23 @@ export default function GetLeagues() {
     return <div>Loading...</div>;
   } else {
     return (
-      <form>
-        <label>
-          League:
-          <select>
-            {[leagues].map((leagues) => (
-              <li key={leagues.idLeague}>{leagues.strLeague}</li>
-            ))}
-          </select>
-        </label>
-      </form>
+      <div id="formDiv">
+        <form id="leagueForm">
+          <label id="leagueName">
+            Select a league:
+            <select
+              value={leagues}
+              onChange={(e) => setLeagues(e.currentTarget.value)}
+            >
+              {[leagues].map((leagues, key) => (
+                <option key={key} value={key}>
+                  {leagues.idLeague}
+                </option>
+              ))}
+            </select>
+          </label>
+        </form>
+      </div>
     );
   }
 }

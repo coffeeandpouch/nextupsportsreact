@@ -11,3 +11,20 @@ h1 {
 h2 {
   margin-top: 35px;
 }
+
+#formDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+#leagueForm {
+  width: 4000px;
+  padding: 10px;
+  background: lightblue;
+}
+
+#leagueName {
+  width: 150px;
+}
